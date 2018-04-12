@@ -11,5 +11,6 @@ import com.example.demo.user.User;
 public interface PortfolioRepository extends CrudRepository<Portfolio, Integer> {
 
 	public List<Portfolio> findByUserId(int id);
+	public List<Portfolio> findByUserUname(String id);
 
 }

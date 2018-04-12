@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
@@ -17,9 +18,9 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/api/users/{id}")
-    public User show(@PathVariable("id") int id){
-        return userRepository.findOne(id);
+    @GetMapping("/api/users/{name}")
+    public User show(@PathVariable("name") String name){
+        return userRepository.findByUname(name);
     }
     @PostMapping("/api/users")
     public void create(@RequestBody User body){
@@ -27,8 +28,8 @@ public class UserController {
     }
 
     @PutMapping("/api/users/{id}")
-    public void update(@PathVariable("id") int id, @RequestBody User body){
-        User u = userRepository.findOne(id);
+    public void update(@PathVariable("id") String id, @RequestBody User body){
+        User u = userRepository.findByUname(id);
         u.setUname(body.getUname());
         u.setNetworth(body.getNetworth());
         u.setPassword(body.getPassword());

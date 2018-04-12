@@ -34,7 +34,7 @@ public class Transaction {
 		this.sName = sName;
 		this.price = price;
 		this.quantity = quantity;
-		this.user = new User(uid," "," ",0);
+		this.user = new User(uid," "," ",0," ");
 	}
 	public int gettId() {
 		return tId;

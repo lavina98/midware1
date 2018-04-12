@@ -1,4 +1,5 @@
 package com.example.demo.user;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,28 +9,24 @@ import javax.validation.constraints.NotNull;
 public class User {
     @Id
     private int id;
-//    @NotNull
+    @Column(unique=true)
     private String uname;
-//    @NotNull
     private String password;
-//    @NotNull
     private int networth;
+    private String emailId;
     public User() {
 		super();
 	}
-	public User(int id, String uname, String password,  int networth) {
+	
+	public User(int id, String uname, String password, int networth, String emailId) {
 		super();
 		this.id = id;
 		this.uname = uname;
 		this.password = password;
 		this.networth = networth;
+		this.emailId = emailId;
 	}
-//	public User(User users) {
-//		this.networth = users.getNetworth();
-//        this.uname = users.getUname();
-//        this.id = users.getId();
-//        this.password = users.getPassword();
-//	}
+
 	public int getId() {
 		return id;
 	}
@@ -54,10 +51,19 @@ public class User {
 	public void setNetworth(int networth) {
 		this.networth = networth;
 	}
+
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", uname=" + uname + ", password=" + password +   ", networth="
-				+ networth + "]";
+		return "User [id=" + id + ", uname=" + uname + ", password=" + password + ", networth=" + networth
+				+ ", emailId=" + emailId + "]";
 	}
    
 }
