@@ -36,5 +36,10 @@ public class StockController {
     public  Stock showbysymbol(@PathVariable("sym") String sym){
         return  stockRepository.findBySymbol(sym);
     }
+    
+    @GetMapping("/api/stocks/{sname}")
+    public  Stock showbyname(@PathVariable("sanme") String sname){
+        return  stockRepository.findByName(sname);
+    }
    
 }

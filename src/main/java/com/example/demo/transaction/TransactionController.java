@@ -33,14 +33,14 @@ public class TransactionController {
     }
     @PostMapping("/api/users/{uid}/transactions")
     public void create(@RequestBody Transaction body,@PathVariable("uid") int uid){
-    	body.setUser(new User(uid," "," ",0," "));
+    	body.setUser(new User(uid," "," ",0));
     	transactionRepository.save(body);
     }
 
     @PutMapping("/api/users/{uid}/transactions/{id}")
     public void update(@PathVariable("uid") int uid, @RequestBody Transaction body,@PathVariable("id") int id){
        Transaction u =transactionRepository.findOne(id);
-      u.setUser(new User(uid," "," ",0," "));
+      u.setUser(new User(uid," "," ",0));
       u.setPrice(body.getPrice());
       u.setQuantity(body.getQuantity());
       u.setsName(body.getsName());

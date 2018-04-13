@@ -23,7 +23,7 @@ public class Portfolio {
 		this.pId = pId;
 		this.pName = pName;
 		this.pWorth = pWorth;
-		this.user=new User(uid," ","",0," ");
+		this.user=new User(uid," ","",0);
 	}
 	public int getpId() {
 		return pId;

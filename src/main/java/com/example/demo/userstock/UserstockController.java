@@ -3,6 +3,7 @@ import java.util.*;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +30,21 @@ public class UserstockController {
 		        
 		    }
 
-		    @GetMapping("/api/users/{id}/portfolios/{pId}/userstocks/{uid}")
-		    public Userstock show(@PathVariable("uId") int uId){
-		        return userstockrepository.findOne(uId);
+		    @GetMapping("/api/users/{id}/portfolios/{pId}/userstocks/{uId}")
+		    public Userstock find(@PathVariable("uId") String uId,@PathVariable("pId") int pid){
+		        List<Userstock> arr=userstockrepository.findByPortfolioPId(pid);
+		        for(Userstock x :arr)
+		        {
+		        	if(x.getsName().equals(uId))
+		        		return x;
+		        }
+		        return null;
 		    }
+//		    @GetMapping("/api/users/{id}/portfolios/{pId}/userstocks/{uid}")
+//		    public Userstock show(@PathVariable("id") int id,@PathVariable("uid") String uId){
+//		        return userstockrepository.findstock(id,uId);
+//		    }
+		   
 		    @PostMapping("/api/users/{id}/portfolios/{pid}/userstocks")
 		    public void create(@RequestBody Userstock body,@PathVariable("pid") int pid,@PathVariable("id") int id){
 		    	body.setPortfolio(new Portfolio(pid," ",0,id));
@@ -55,4 +67,5 @@ public class UserstockController {
 		    	userstockrepository.delete(id);
 		        
 		    }
+		   
 }

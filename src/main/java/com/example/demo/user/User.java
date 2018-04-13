@@ -18,7 +18,7 @@ public class User {
 		super();
 	}
 	
-	public User(int id, String uname, String password, int networth, String emailId) {
+	public User(int id, String uname, String password, int networth) {
 		super();
 		this.id = id;
 		this.uname = uname;
@@ -63,7 +63,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", uname=" + uname + ", password=" + password + ", networth=" + networth
-				+ ", emailId=" + emailId + "]";
+				+ "]";
 	}
    
 }
